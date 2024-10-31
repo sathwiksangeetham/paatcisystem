@@ -17,5 +17,9 @@ if __name__ == "__main__":
 "print('Another sample change try')" 
 "print('Another new sample change')" 
 "print('Another sample satwhik change')" 
+HEAD
 "print('Another sample sample change')" 
 "print('Another sample  change')" 
+
+"print('Testing real-time dispatcher and test runner interaction')" 
+5771409 (Testing dispatcher and runner in real time)
