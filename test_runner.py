@@ -1,22 +1,16 @@
 import os
+import subprocess
 import sys
-import unittest
 
 def run_tests(repo_path):
-    # Define the test folder path
-    test_folder = os.path.join(repo_path, "tests")
-    
-    # Discover and load all tests from the test folder
-    suite = unittest.TestLoader().discover(test_folder)
-    
-    # Run the tests and display the results
     print("Running tests...")
-    unittest.TextTestRunner().run(suite)
+    result = subprocess.run([sys.executable, "-m", "unittest", "discover", repo_path], capture_output=True, text=True)
+    print(result.stdout)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python test_runner.py <repo_path>")
         sys.exit(1)
 
-    repo_path = sys.argv[1]
-    run_tests(repo_path)
+    run_tests(sys.argv[1])
+ 

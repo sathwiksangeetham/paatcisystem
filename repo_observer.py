@@ -13,7 +13,7 @@ def poll():
 
     while True:
         try:
-            # Fetch latest changes from the remote
+            # Fetch the latest changes from the remote
             subprocess.check_output(["git", "-C", args.repo, "fetch", "origin", "master"])
             # Get the latest commit hash
             latest_commit_hash = subprocess.check_output(
@@ -22,11 +22,11 @@ def poll():
 
             # Check if there is a new commit
             if last_commit_hash != latest_commit_hash:
-                print("New commit detected. Notifying dispatcher...")
+                print(f"New commit detected: {latest_commit_hash}. Notifying dispatcher...")
                 last_commit_hash = latest_commit_hash
 
             else:
-                # Only output "No new commit. Sleeping..." when no changes are detected
+                # Output "No new commit. Sleeping..." when no changes are detected
                 print("No new commit. Sleeping...")
 
         except subprocess.CalledProcessError as e:
